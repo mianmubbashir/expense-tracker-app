@@ -5,8 +5,8 @@ interface ExpenseState {
   expense: number;
   income: number;
   expenseHistory: {
-    expenseNAme: string;
-    amount: number;
+    expenseName: string;
+    amount: number | string;
   }[];
 }
 
@@ -22,10 +22,21 @@ const initialState: ExpenseState = {
   expenseHistory: [],
 };
 
-export const expenseSlice = createSlice({
+const expenseSlice = createSlice({
   name: "expense",
   initialState,
   reducers: {
-    addExpenseToHistory: (state, action: PayloadAction<IExpense>) => {},
+    addExpenseToHistory: (state, action: PayloadAction<IExpense>) => {
+      state.expenseHistory.unshift(action.payload);
+    },
+    deleteExpenseFromHistory: (state, action: PayloadAction<string>) => {
+      state.expenseHistory = state.expenseHistory.filter(
+        (transaction) => transaction.expenseName !== action.payload
+      );
+    },
   },
 });
+
+export const { addExpenseToHistory, deleteExpenseFromHistory } =
+  expenseSlice.actions;
+export default expenseSlice.reducer;

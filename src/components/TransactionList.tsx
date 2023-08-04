@@ -1,12 +1,17 @@
 import { Divider } from "@mui/material";
-import React from "react";
+import { useSelector } from "react-redux";
 
 function TransactionList() {
+  const expenses = useSelector((state) => state.expense.expenseHistory);
   return (
     <>
       <h3>History</h3>
       <Divider />
-      <ul></ul>
+      <ul>
+        {expenses.map((item, index) => {
+          <li>{item.expenseName}</li>;
+        })}
+      </ul>
     </>
   );
 }

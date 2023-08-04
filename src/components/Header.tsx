@@ -1,6 +1,3 @@
-import { Roboto_Flex } from "next/font/google";
-import React from "react";
-
 function Header() {
   return (
     <h2

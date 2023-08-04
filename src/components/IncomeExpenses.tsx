@@ -1,5 +1,5 @@
-import { Box, Divider, Grid, Paper } from "@mui/material";
-import React from "react";
+"use client";
+import { Divider, Grid, Paper } from "@mui/material";
 
 function IncomeExpense() {
   return (
