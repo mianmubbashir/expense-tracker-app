@@ -3,7 +3,7 @@ import Balance from "@/components/Balance";
 import Header from "@/components/Header";
 import IncomeExpense from "@/components/IncomeExpenses";
 import TransactionList from "@/components/TransactionList";
-import { Box, Container, Paper } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 export default function Home() {
   return (

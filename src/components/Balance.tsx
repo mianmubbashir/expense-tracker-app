@@ -1,11 +1,16 @@
+import { Box, Typography } from "@mui/material";
 import React from "react";
 
 function Balance() {
   return (
-    <>
-      <h4>Your Balance</h4>
-      <h1>$0.00</h1>
-    </>
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Typography variant="h6" component="h4">
+        Your Balance
+      </Typography>
+      <Typography variant="h4" component="h1" sx={{ mt: -1, mb: 2 }}>
+        $0.00
+      </Typography>
+    </Box>
   );
 }
 
