@@ -6,7 +6,6 @@ import { Divider, Grid, Paper } from "@mui/material";
 function IncomeExpense() {
   const transactions = useAppSelector((state) => state.expenses.Transaction);
 
-  // Calculate income and expense amounts separately
   const incomeAmount = transactions
     .reduce((acc, item) => (item.amount > 0 ? acc + item.amount : acc), 0)
     .toFixed(2);

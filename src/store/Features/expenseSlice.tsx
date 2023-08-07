@@ -1,12 +1,10 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
-//initial state type
 export type InitialStateTypes = {
   Transaction: TransactionTypes[];
 };
 
-// transaction Type
 export type TransactionTypes = {
   id: number;
   category: string;
