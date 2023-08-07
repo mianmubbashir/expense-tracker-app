@@ -51,3 +51,11 @@
   .list li:hover .delete-btn {
     opacity: 1;
   }
+
+  .mplus {
+    color: #2ecc71;
+  }
+  
+  .mminus {
+    color: #c0392b;
+  }

@@ -18,7 +18,7 @@ const initailState: InitialStateTypes = {
 };
 
 const expenseSlice = createSlice({
-  name: "books",
+  name: "expenses",
   initialState: initailState,
   reducers: {
     addExpenseToHistory: (state, action: PayloadAction<TransactionTypes>) => {

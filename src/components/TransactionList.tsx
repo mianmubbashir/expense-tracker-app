@@ -7,8 +7,6 @@ function TransactionList() {
   const expense = useAppSelector((state) => state.expenses.Transaction);
   const dispatch = useAppDispatch();
 
-  // const sign = trans.amount < 0 ? "-" : "+";
-
   return (
     <>
       <h3>History</h3>
