@@ -29,11 +29,12 @@ const AddTransaction: React.FC = () => {
     <>
       <h3>Add new transaction</h3>
       <Divider />
+      <br />
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-        <Typography>Text</Typography>
+        <Typography>Category</Typography>
         <TextField
           id="my-input"
-          label="Enter Text"
+          label="Enter Category..."
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         />
@@ -44,7 +45,7 @@ const AddTransaction: React.FC = () => {
           id="my-input"
           aria-describedby="my-helper-text"
           variant="outlined"
-          label="Enter Amount"
+          label="Enter Amount..."
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
