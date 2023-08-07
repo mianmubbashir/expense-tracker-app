@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import { addExpenseToHistory } from "@/store/Features/expenseSlice";
+import { useAppDispatch } from "@/store/Hooks/hooks";
+import { Divider } from "@mui/material";
+import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import { Button, Divider } from "@mui/material";
-import { useAppDispatch } from "@/store/Hooks/hooks";
-import { addExpenseToHistory } from "@/store/Features/expenseSlice";
+import React, { useState } from "react";
 
 const AddTransaction: React.FC = () => {
   const [category, setCategory] = useState<string>("");
@@ -49,9 +49,11 @@ const AddTransaction: React.FC = () => {
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
-        <Button variant="contained" onClick={onSubmit}>
-          Add transaction
-        </Button>
+        <form onSubmit={onSubmit}>
+          <button className={"btn"} type="submit">
+            Add transaction
+          </button>
+        </form>
       </Box>
     </>
   );
