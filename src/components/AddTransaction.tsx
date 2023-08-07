@@ -4,10 +4,26 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Button, Divider } from "@mui/material";
+import { useAppDispatch } from "@/store/Hooks/hooks";
+import { addExpenseToHistory } from "@/store/Features/expenseSlice";
 
 const AddTransaction: React.FC = () => {
-  const [text, setText] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
   const [amount, setAmount] = useState<number | string>("");
+
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const newTransaction = {
+      id: Math.floor(Math.random() * 100000000),
+      category,
+      amount: +amount,
+    };
+
+    dispatch(addExpenseToHistory(newTransaction));
+  };
 
   return (
     <>
@@ -18,8 +34,8 @@ const AddTransaction: React.FC = () => {
         <TextField
           id="my-input"
           label="Enter Text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
         />
         <Typography>
           Amount <br /> (negative - expense, positive - income)
@@ -32,7 +48,9 @@ const AddTransaction: React.FC = () => {
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
-        <Button variant="contained">Add transaction</Button>
+        <Button variant="contained" onClick={onSubmit}>
+          Add transaction
+        </Button>
       </Box>
     </>
   );

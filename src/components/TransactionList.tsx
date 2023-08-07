@@ -1,16 +1,33 @@
+"use client";
 import { Divider } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/store/Hooks/hooks";
+import { deleteExpenseFromHistory } from "@/store/Features/expenseSlice";
 
 function TransactionList() {
-  const expenses = useSelector((state) => state.expense.expenseHistory);
+  const expense = useAppSelector((state) => state.expenses.Transaction);
+  const dispatch = useAppDispatch();
+
+  // const sign = trans.amount < 0 ? "-" : "+";
+
   return (
     <>
       <h3>History</h3>
       <Divider />
-      <ul>
-        {expenses.map((item, index) => {
-          <li>{item.expenseName}</li>;
-        })}
+      <ul className="list">
+        {expense.map((item: any, index: number) => (
+          <li key={item.id} className={item.amount < 0 ? "minus" : "plus"}>
+            {item.category}
+            <span>PKR{Math.abs(item.amount)}</span>
+            <button
+              onClick={() => dispatch(deleteExpenseFromHistory(item.id))}
+              className={`delete-btn ${
+                item.amount < 0 ? "del-red" : "del-green"
+              }`}
+            >
+              x
+            </button>
+          </li>
+        ))}
       </ul>
     </>
   );
